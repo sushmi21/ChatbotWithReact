@@ -1,0 +1,8 @@
+.msg-input-wrapper {
+  padding: 2px 4px;
+  display: flex;
+}
+
+.msg-input {
+  flex: 1;
+}
