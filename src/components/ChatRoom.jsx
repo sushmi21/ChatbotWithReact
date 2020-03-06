@@ -4,6 +4,8 @@ import MessageInput from "./MessageInput";
 import "../assets/css/chatRoom.css";
 import ChatHistory from "./ChatHistory";
 import ScrollToBottom from "react-scroll-to-bottom";
+import { addMessage } from "../actions";
+import { useSelector, useDispatch } from "react-redux";
 
 const { SocketClient } = require("@cognigy/socket-client");
 const socketUrl = "https://endpoint-demo.cognigy.ai";
@@ -16,9 +18,11 @@ const client = new SocketClient(
   }
 );
 
+// Chat wrapper component
 const ChatRoom = () => {
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState([]);
+  const messages = useSelector(state => state);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const establishConnection = async () => {
@@ -32,16 +36,14 @@ const ChatRoom = () => {
     };
   }, []);
 
-  const handleSendMessage = e => {
+  // On send button click
+  const handleSendMessage = async e => {
     e.preventDefault();
     if (message !== "") {
-      client.sendMessage(message);
-      setMessages(messages.concat([{ text: message, source: "test" }])); // message sent by the user
+      await client.sendMessage(message);
+      dispatch(addMessage([{ text: message, source: "test" }])); // dispatch action to add message sent by the user
       client.on("output", output => {
-        setMessages(
-          messages =>
-            messages.concat([{ text: output.text, source: output.source }]) // message received from bot
-        );
+        dispatch(addMessage([{ text: output.text, source: output.source }])); // dispatch action to add message received from bot
       });
       setMessage(""); //reset the input field
     }
@@ -55,7 +57,7 @@ const ChatRoom = () => {
         {/* Wrapper component to automatically scroll to botton when new messages are sent or recieved */}
         <ScrollToBottom className="chat-history">
           {messages.length !== 0 ? (
-            <ChatHistory messages={messages} />
+            <ChatHistory />
           ) : (
             // Display initial text if no messages to display
             <div className="text-muted m-5 text-center">

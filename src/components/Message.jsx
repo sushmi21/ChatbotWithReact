@@ -1,9 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Avatar from "@material-ui/core/Avatar";
 import "../assets/css/message.css";
 
 // Comonent to display the a message
-const Message = ({ message }) => {
+const Message = React.memo(({ message }) => {
   // check the message source to visually differentiate the message sent by the bot and the user
   return message.source === "bot" ? (
     <div className="py-2">
@@ -23,6 +24,10 @@ const Message = ({ message }) => {
       </div>
     </div>
   );
+});
+
+Message.propTypes = {
+  message: PropTypes.objectOf(PropTypes.string).isRequired
 };
 
 export default Message;
