@@ -20,4 +20,4 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-Note: URL token is stored in .env.local file (git ignored). Replace the environment variable `process.env.REACT_APP_COGNIGY_TOKEN` with the URL token of Cognigy/SocketClient
+Note: URL token is stored in .env.local file (git ignored). Replace the environment variable `process.env.REACT_APP_COGNIGY_TOKEN` inside `src/components/ChatRoom.jsx` with the URL token of Cognigy/SocketClient
