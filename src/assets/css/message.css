@@ -1,0 +1,54 @@
+/* Outgoing message styles */
+
+.outgoing-msg-inner {
+  float: right;
+  width: 60%;
+}
+
+.outgoing-msg-inner p {
+  background: #3f51b5 none repeat scroll 0 0;
+  border-radius: 10px;
+  font-size: 14px;
+  margin: 0;
+  color: #fff;
+  padding: 5px 10px 5px 12px;
+  width: 100%;
+  overflow-wrap: break-word;
+}
+
+.outgoing-msg {
+  overflow: hidden;
+  margin: 15px 0 15px;
+}
+
+/* Incoming message style */
+
+.incoming-msg-img {
+  display: inline-block;
+  padding-right: 5px;
+}
+
+.MuiBadge-colorSecondary {
+  background-color: #0be141 !important;
+}
+
+.incoming-msg {
+  display: inline-block;
+  vertical-align: top;
+  width: 85%;
+}
+
+.incoming-msg-inner {
+  width: 70%;
+}
+
+.incoming-msg-inner p {
+  background: #ebebeb none repeat scroll 0 0;
+  border-radius: 10px;
+  color: #495057;
+  font-size: 14px;
+  margin: 0;
+  padding: 5px 10px 5px 12px;
+  width: 100%;
+  overflow-wrap: break-word;
+}

@@ -1,18 +1,20 @@
 import React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ChatRoom from "./components/ChatRoom";
-import "./assets/css/app.css";
 
 const App = () => {
   return (
-    <>
-      <h1 className="title">Cognigy Chatbot Assignment</h1>
-      <ChatRoom />
-      {/* <div className="chat-button">
-        <Fab color="primary" aria-label="add">
-          <i className="fas fa-comment-alt fa-2x"></i>
-        </Fab>
-      </div> */}
-    </>
+    <BrowserRouter>
+      <h1 className="m-3 text-center" style={{ fontSize: "1.5rem" }}>
+        Cognigy Chatbot Assignment
+      </h1>
+      <Switch>
+        <Route exact path="/" component={ChatRoom} />
+        <Route Route path="*" exact>
+          <div>Page Not found</div>
+        </Route>
+      </Switch>
+    </BrowserRouter>
   );
 };
 

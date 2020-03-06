@@ -1,8 +1,14 @@
 .msg-input-wrapper {
   padding: 2px 4px;
   display: flex;
+  border-radius: 0 0 15px 15px !important;
+  box-shadow: none !important;
 }
 
 .msg-input {
   flex: 1;
+}
+
+.msg-input-wrapper button:focus {
+  outline: none;
 }
