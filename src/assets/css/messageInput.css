@@ -6,3 +6,7 @@
 .msg-input {
   flex: 1;
 }
+
+.msg-input-wrapper button:focus {
+  outline: none;
+}
