@@ -20,14 +20,14 @@ const ChatRoom = () => {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
 
-  // Establish connection on mount
   useEffect(() => {
     const establishConnection = async () => {
-      // establish a socket connection (returns a promise)
+      // Establish socket connection on mount
       await client.connect();
     };
     establishConnection();
     return () => {
+      // remove connection on unmount
       client.disconnect();
     };
   }, []);
@@ -36,13 +36,14 @@ const ChatRoom = () => {
     e.preventDefault();
     if (message !== "") {
       client.sendMessage(message);
-      setMessages(messages.concat([{ text: message, source: "test" }]));
+      setMessages(messages.concat([{ text: message, source: "test" }])); // message sent by the user
       client.on("output", output => {
-        setMessages(messages =>
-          messages.concat([{ text: output.text, source: output.source }])
+        setMessages(
+          messages =>
+            messages.concat([{ text: output.text, source: output.source }]) // message received from bot
         );
       });
-      setMessage("");
+      setMessage(""); //reset the input field
     }
   };
 
@@ -50,9 +51,19 @@ const ChatRoom = () => {
     <Container maxWidth="sm">
       <div className="chat-box-wrapper">
         <div className="chat-title">Chat</div>
+
+        {/* Wrapper component to automatically scroll to botton when new messages are sent or recieved */}
         <ScrollToBottom className="chat-history">
-          <ChatHistory messages={messages} />
+          {messages.length !== 0 ? (
+            <ChatHistory messages={messages} />
+          ) : (
+            // Display initial text if no messages to display
+            <div className="text-muted m-5 text-center">
+              Start a conversation with our bot
+            </div>
+          )}
         </ScrollToBottom>
+
         <div className="mt-3 chat-input">
           <MessageInput
             message={message}

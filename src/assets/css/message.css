@@ -1,3 +1,5 @@
+/* Outgoing message styles */
+
 .outgoing-msg-inner {
   float: right;
   width: 60%;
@@ -17,6 +19,8 @@
   overflow: hidden;
   margin: 15px 0 15px;
 }
+
+/* Incoming message style */
 
 .incoming-msg-img {
   display: inline-block;
