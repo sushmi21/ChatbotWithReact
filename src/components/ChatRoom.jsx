@@ -3,6 +3,7 @@ import Container from "@material-ui/core/Container";
 import MessageInput from "./MessageInput";
 import "../assets/css/chatRoom.css";
 import ChatHistory from "./ChatHistory";
+import ScrollToBottom from "react-scroll-to-bottom";
 
 const { SocketClient } = require("@cognigy/socket-client");
 const socketUrl = "https://endpoint-demo.cognigy.ai";
@@ -49,9 +50,9 @@ const ChatRoom = () => {
     <Container maxWidth="sm">
       <div className="chat-box-wrapper">
         <div className="chat-title">Chat</div>
-        <div className="chat-history">
+        <ScrollToBottom className="chat-history">
           <ChatHistory messages={messages} />
-        </div>
+        </ScrollToBottom>
         <div className="mt-3 chat-input">
           <MessageInput
             message={message}

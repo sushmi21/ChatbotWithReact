@@ -15,7 +15,6 @@
 }
 
 .chat-history {
-  overflow-y: scroll;
   height: 35rem;
   margin-bottom: 3rem;
 }
