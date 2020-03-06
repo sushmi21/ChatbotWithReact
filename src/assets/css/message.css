@@ -13,6 +13,7 @@
   color: #fff;
   padding: 5px 10px 5px 12px;
   width: 100%;
+  overflow-wrap: break-word;
 }
 
 .outgoing-msg {
@@ -25,6 +26,10 @@
 .incoming-msg-img {
   display: inline-block;
   padding-right: 5px;
+}
+
+.MuiBadge-colorSecondary {
+  background-color: #0be141 !important;
 }
 
 .incoming-msg {
@@ -45,4 +50,5 @@
   margin: 0;
   padding: 5px 10px 5px 12px;
   width: 100%;
+  overflow-wrap: break-word;
 }

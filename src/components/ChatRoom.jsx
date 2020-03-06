@@ -42,7 +42,8 @@ const ChatRoom = () => {
     if (message !== "") {
       await client.sendMessage(message);
       dispatch(addMessage([{ text: message, source: "test" }])); // dispatch action to add message sent by the user
-      client.on("output", output => {
+
+      client.once("output", output => {
         dispatch(addMessage([{ text: output.text, source: output.source }])); // dispatch action to add message received from bot
       });
       setMessage(""); //reset the input field
@@ -67,6 +68,7 @@ const ChatRoom = () => {
         </ScrollToBottom>
 
         <div className="mt-3 chat-input">
+          <hr className="mb-0" />
           <MessageInput
             message={message}
             handleMessageType={e => setMessage(e.target.value)}

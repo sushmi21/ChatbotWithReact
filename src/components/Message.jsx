@@ -1,4 +1,5 @@
 import React from "react";
+import Badge from "@material-ui/core/Badge";
 import PropTypes from "prop-types";
 import Avatar from "@material-ui/core/Avatar";
 import "../assets/css/message.css";
@@ -9,7 +10,18 @@ const Message = React.memo(({ message }) => {
   return message.source === "bot" ? (
     <div className="py-2">
       <div className="incoming-msg-img">
-        <Avatar alt="Bot" src="https://picsum.photos/id/289/200/300" />
+        <Badge
+          color="secondary"
+          overlap="circle"
+          badgeContent=" "
+          variant="dot"
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "right"
+          }}
+        >
+          <Avatar alt="Bot" src="https://picsum.photos/id/1015/200/300" />
+        </Badge>
       </div>
       <div className="incoming-msg">
         <div className="incoming-msg-inner">
