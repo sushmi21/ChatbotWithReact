@@ -6,7 +6,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <h1 className="m-3 text-center" style={{ fontSize: "1.5rem" }}>
-        Cognigy Chatbot Assignment
+       Sample Chatbot
       </h1>
       <Switch>
         <Route exact path="/" component={ChatRoom} />
